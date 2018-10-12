@@ -13,32 +13,30 @@ jobs:
   docker:
      # note: this docker image already has gometalinter + glide, so we do not need
      - image: azuka/ci-golang:1.9
-   environment:
-     - GOPATH: /go
-     - CIRCLE_TEST_RESULTS: /tmp/test-results
-   steps:
-     - checkout
-     - run:
-         name: Initialize the build & Install requirements
-         command: |
-           curl https://glide.sh/get | sh
-           mkdir -p $CIRCLE_TEST_RESULTS
-           make init-circle
-     - run:
-         name: Run Circle Linter
-         command: |
-           make lint-circle || make lint
-     - run:
-         name: Run Circle Tests
-         command: |
-           make test-circle
-           make coverage
-     - store_test_results:
-         path: /tmp/test-results
-     - store_artifacts:
-         path: /tmp/test-results
-
-
+  environment:
+    - GOPATH: /go
+    - CIRCLE_TEST_RESULTS: /tmp/test-results
+  steps:
+    - checkout
+    - run:
+        name: Initialize the build & Install requirements
+        command: |
+          curl https://glide.sh/get | sh
+          mkdir -p $CIRCLE_TEST_RESULTS
+          make init-circle
+    - run:
+        name: Run Circle Linter
+        command: |
+          make lint-circle || make lint
+    - run:
+        name: Run Circle Tests
+        command: |
+          make test-circle
+          make coverage
+    - store_test_results:
+        path: /tmp/test-results
+    - store_artifacts:
+        path: /tmp/test-results
 
 workflows:
   version: 2
