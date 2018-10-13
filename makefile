@@ -17,7 +17,7 @@ GO_FILES = $(shell find . -name "*.go" | grep -v vendor | uniq)
 LDFLAGS = -ldflags="-X ${PKG}/pkg/version.VERSION=${VERSION}"
 
 # This repo's root import path (under GOPATH).
-PKG := github.mheducation.com/MHEducation/dle-roster-sdk-go
+PKG := github.mheducation.com/goplayground/goci
 
 # Where to push the docker image.
 ALL_ARCH := amd64
