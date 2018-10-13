@@ -1,12 +1,12 @@
 version: 2
 jobs:
   build:
-    working_directory: /go/src/github.mheducation.com/goplaygound/goci
+    working_directory: ~/go/src/github.mheducation.com/goplaygound/goci
     docker:
        # note: this docker image already has gometalinter + glide, so we do not need
        - image: azuka/ci-golang:1.9
     environment:
-      - GOPATH: ~/go
+      - GOPATH: /go
       - CIRCLE_TEST_RESULTS: /tmp/test-results
     steps:
       - checkout
